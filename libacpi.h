@@ -19,6 +19,10 @@
 #define MAX_BUF 1024
 #define MAX_ITEMS 10
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * \enum return values
  * \brief return values of internal functions
@@ -186,17 +190,17 @@ typedef struct {
  * Array for existing batteries, loop until
  * globals->battery_count
  */
-battery_t batteries[MAX_ITEMS];
+extern battery_t batteries[MAX_ITEMS];
 /**
  * Array for existing thermal zones, loop until
  * globals->thermal_count
  */
-thermal_t thermals[MAX_ITEMS];
+extern thermal_t thermals[MAX_ITEMS];
 /**
  * Array for existing fans, loop until
  * globals->fan_count
  */
-fan_t fans[MAX_ITEMS];
+extern fan_t fans[MAX_ITEMS];
 /**
  * Finds existing batteries and fills the
  * corresponding batteries structures with the paths
@@ -258,4 +262,9 @@ int read_acpi_zone(const int num, global_t *globals);
  * @param num number for the fan to read
  */
 int read_acpi_fan(const int num);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* !__LIBACPI_H__ */
